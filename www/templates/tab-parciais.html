@@ -1,0 +1,19 @@
+<ion-view view-title="Parciais">
+  <ion-content class="padding">
+    <ion-refresher pulling-text="Puxe para atualizar..." on-refresh="pegarParciais()">
+    </ion-refresher>
+
+
+    <p>{{mensagem}}</p>
+    <div class="list" ng-repeat="jogador in jogadores">
+      <div>
+        <div class="item item-avatar">
+
+          <img src="{{jogador.escudo}}">
+          <h2></h2>
+          <!--<p>{{jogador.posicao}}, {{jogador.clube}}</p>-->
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

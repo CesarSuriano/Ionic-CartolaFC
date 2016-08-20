@@ -1,0 +1,18 @@
+<ion-view view-title="Mais escalados">
+  <ion-content class="padding">
+
+    <ion-refresher pulling-text="Puxe para atualizar..." on-refresh="pegarJogadores()">
+    </ion-refresher>
+
+    <div class="list" ng-repeat="jogador in jogadores">
+      <div>
+        <div class="item item-avatar">
+          <img src="{{jogador.escudo}}">
+          <h2>{{jogador.apelido}}</h2>
+          <p>{{jogador.posicao}}, {{jogador.clube}}</p>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
