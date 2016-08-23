@@ -8,19 +8,34 @@ angular.module('cartola.controllers', [])
     })
     .error(function (data, status) {
       $scope.mensagem = data.mensagem;
-      console.log(data.mensagem);
+
     })
     .success(function (data, status) {
+      var atletas = data;
       $scope.jogadores = [];
-      for (var i = 0; i < data.length; i++) {
+
+      for(key in atletas.atletas){
+        var imagem = atletas.atletas[key].foto;
+        var imagem = imagem.replace("FORMATO", "140x140");
+
+
         $scope.jogadores.push({
-          apelido: data[i].Atleta.apelido,
-          posicao: data[i].posicao,
-          clube  : data[i].clube,
-          escudo : data[i].escudo_clube,
-        });
+          apelido: atletas.atletas[key].apelido,
+          pontuacao: atletas.atletas[key].pontuacao,
+          foto: imagem
+        })
+
       }
-      console.log("Deu certo");
+
+      //$scope.jogadores = [];
+      // for (var i = 0; i < data.length; i++) {
+      //   $scope.jogadores.push({
+      //     apelido: data[i].Atletas.apelido,
+      //     pontuacao: data[i].Atletas.pontuacao,
+      //     foto  : data[i].Atletas.foto
+      //   });
+      //}
+
     })
     $scope.$broadcast('scroll.refreshComplete');
   }

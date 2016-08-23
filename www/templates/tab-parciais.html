@@ -1,19 +1,27 @@
-<ion-view view-title="Parciais">
+<ion-view>
+  <ion-nav-title>
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="$parent.buscar">
+      </label>
+      <button class="button button-clear button-light" ng-click="buscar = null">
+        Cancel
+      </button>
+    </div>
+  </ion-nav-title>
+
   <ion-content class="padding">
     <ion-refresher pulling-text="Puxe para atualizar..." on-refresh="pegarParciais()">
     </ion-refresher>
-
-
     <p>{{mensagem}}</p>
-    <div class="list" ng-repeat="jogador in jogadores">
-      <div>
-        <div class="item item-avatar">
+    <div class="list" ng-repeat="jogador in jogadores | filter:buscar | orderBy:'-pontuacao'">
 
-          <img src="{{jogador.escudo}}">
-          <h2></h2>
-          <!--<p>{{jogador.posicao}}, {{jogador.clube}}</p>-->
-        </div>
+      <div class="item item-avatar">
+        <img src="{{jogador.foto}}">
+        <h2>{{jogador.apelido}}</h2>
+        <p>{{jogador.pontuacao}}</p>
       </div>
-    </div>
-  </ion-content>
-</ion-view>
+
+    </ion-content>
+  </ion-view>
